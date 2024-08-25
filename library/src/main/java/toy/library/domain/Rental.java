@@ -1,16 +1,16 @@
 package toy.library.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
 @Getter
+@ToString
 public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +23,11 @@ public class Rental {
     @Setter
     private LocalDateTime returnDate;
 
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
 
     @ManyToOne
     @JoinColumn(name = "book_id")
@@ -36,5 +38,7 @@ public class Rental {
         this.rentalDate = rentalDate;
         this.user = user;
         this.book = book;
+        user.getRentals().add(this);
+        book.getRentals().add(this);
     }
 }

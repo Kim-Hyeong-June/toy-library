@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .author-profile {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .author-photo {
+            float: left;
+            margin-right: 20px;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .author-info {
+            overflow: hidden;
+        }
+        .author-info h1 {
+            margin-top: 0;
+        }
+        .book-list {
+            list-style: none;
+            padding: 0;
+        }
+        .book-list li {
+            background-color: #ffffff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .book-list li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #555;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+        }
+        nav a:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<header>
+    <h1>Library - Author List</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Books</a>
+    <a href="#">Authors</a>
+    <a href="#">Login</a>
+</nav>
+<body>
+
+<div class="author-profile">
+    <div class="author-info">
+        <h1>Author Name</h1>
+    </div>
+</div>
+
+<h2>Books by Author Name</h2>
+<ul class="book-list">
+    <li><a href="#">Book Title 1</a></li>
+    <li><a href="#">Book Title 2</a></li>
+    <li><a href="#">Book Title 3</a></li>
+    <li><a href="#">Book Title 4</a></li>
+    <li><a href="#">Book Title 5</a></li>
+</ul>
+
+</body>
+<footer>
+    <p>&copy; 2024 Library. All Rights Reserved.</p>
+</footer>
+</html>

@@ -12,4 +12,9 @@ public class BookDto {
     private String BookNumber;
     private String BookAuthor;
 
+    public BookDto(String bookName, String bookNumber, String bookAuthor) {
+        BookName = bookName;
+        BookNumber = bookNumber;
+        BookAuthor = bookAuthor;
+    }
 }

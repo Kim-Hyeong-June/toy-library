@@ -26,7 +26,7 @@ public class RentalService {
         this.userRepository = userRepository;
     }
 
-    public Long rentBook(Long userId , Long bookId){
+    public Rental rentBook(Long userId , Long bookId){
         User user = userRepository.findById(userId).orElseThrow(() ->
                 new RuntimeException("User not found"));
 
@@ -36,8 +36,7 @@ public class RentalService {
         if(book.isAvailable()){
             book.setAvailable(false);
             Rental rental = Rental.builder().rentalDate(LocalDateTime.now()).book(book).user(user).build();
-            rentalRepository.save(rental);
-            return rental.getId();
+            return rentalRepository.save(rental);
         }
         else{
             throw new RuntimeException("Book is already rented");
