@@ -32,17 +32,14 @@ class RentalServiceTest {
         bookRepository.save(book);
         userRepository.save(user);
 
-        System.out.println(user);
-        System.out.println(book);
-
-        Rental rental = rentalService.rentBook(1L, book.getId());
+        Rental rental = rentalService.rentBook(user.getId(), book.getId());
         Assertions.assertEquals(rental.getUser(), user);
         Assertions.assertEquals(rental.getBook(), book);
 
-        Long l = rentalService.returnBook(rental.getId());
+       Long l = rentalService.returnBook(rental.getId());
         Assertions.assertEquals(rental.getBook().isAvailable()  , true);
-        Assertions.assertEquals(rental.getId() , 1L);
-        System.out.println(rental);
+        Assertions.assertEquals(3L,rental.getId() ); //@PostConstruct
+
 
     }
 }

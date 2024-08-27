@@ -5,13 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import toy.library.domain.Book;
+import toy.library.dto.BookDto;
+import toy.library.dto.BookResponse;
 import toy.library.service.BookService;
 import toy.library.service.RentalService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Controller
+@RestController
 public class BookController {
     private final BookService bookService;
 
@@ -21,16 +25,10 @@ public class BookController {
     }
 
     @GetMapping("/bookList")
-    public String BookList(Model model){
+    public List<BookResponse> BookList() {
         List<Book> books = bookService.bookList();
-        model.addAttribute("books", books);
-        return "books/bookList";
-    }
-
-    @GetMapping("/bookAuthorList")
-    public String BookAuthorList(Model model){
-        List<Book> books = bookService.bookList();
-        model.addAttribute("books", books);
-        return "books/AuthorList";
+        List<BookResponse> book = books.stream().map(o -> new BookResponse(o))
+                .collect(Collectors.toList());
+        return book;
     }
 }

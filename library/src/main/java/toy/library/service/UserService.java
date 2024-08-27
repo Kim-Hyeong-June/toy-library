@@ -12,11 +12,12 @@ import java.util.List;
 public class UserService {
     final private UserRepository userRepository;
 
-    public void createUser(String username, String password) {
+    public User createUser(String username, String password) {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
         userRepository.save(user);
+        return user;
     }
 
     public List<User> userList(){
@@ -27,5 +28,4 @@ public class UserService {
     public void DeleteUser(Long userId){
         userRepository.deleteById(userId);
     }
-
 }

@@ -20,14 +20,11 @@ public class Rental {
     private LocalDateTime rentalDate;
 
     @Column(columnDefinition = "TIMESTAMP")
-    @Setter
     private LocalDateTime returnDate;
-
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 
     @ManyToOne
     @JoinColumn(name = "book_id")
@@ -40,5 +37,8 @@ public class Rental {
         this.book = book;
         user.getRentals().add(this);
         book.getRentals().add(this);
+    }
+    public void setReturnDate(LocalDateTime returnDate) {
+        this.returnDate = returnDate;
     }
 }

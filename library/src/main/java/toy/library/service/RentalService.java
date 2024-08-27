@@ -59,4 +59,7 @@ public class RentalService {
     public List<Rental> findRentalsByBook(Long BookId){
         return rentalRepository.findByBookId(BookId);
     }
+    public List<Rental> findRentalsAll(){
+        return rentalRepository.findAll();
+    }
 }
