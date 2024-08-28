@@ -60,6 +60,6 @@ public class RentalService {
         return rentalRepository.findByBookId(BookId);
     }
     public List<Rental> findRentalsAll(){
-        return rentalRepository.findAll();
+        return rentalRepository.findAllWithUserAndBook();
     }
 }

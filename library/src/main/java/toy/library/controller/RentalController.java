@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import toy.library.domain.Rental;
+import toy.library.dto.RentalAllResponse;
 import toy.library.dto.RentalResponse;
 import toy.library.service.RentalService;
 
@@ -16,10 +17,11 @@ public class RentalController {
     private final RentalService rentalService;
 
     @GetMapping("/rentalList")
-    public List<RentalResponse> rentalList(){
+    public List<RentalAllResponse> rentalList(){
         List<Rental> rentals = rentalService.findRentalsAll();
-        List<RentalResponse> rental = rentals.stream().map(o -> new RentalResponse(o))
+        List<RentalAllResponse> rental = rentals.stream().map(o -> new RentalAllResponse(o))
                 .collect(Collectors.toList());
         return rental;
     }
+
 }

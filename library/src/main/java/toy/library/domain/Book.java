@@ -28,7 +28,6 @@ public class Book {
     @Getter
     private boolean available = true;
 
-
     @OneToMany(mappedBy = "book")
     private List<Rental> rentals = new ArrayList<>();
 

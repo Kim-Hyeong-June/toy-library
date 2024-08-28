@@ -22,23 +22,31 @@ public class Rental {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime returnDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     private Book book;
 
+
+    @Enumerated(EnumType.STRING)
+    private RentalStatus rentalStatus;
+
     @Builder
     public Rental(LocalDateTime rentalDate, User user, Book book) {
+
         this.rentalDate = rentalDate;
         this.user = user;
         this.book = book;
+        this.rentalStatus = RentalStatus.RENTING;
         user.getRentals().add(this);
         book.getRentals().add(this);
     }
+
     public void setReturnDate(LocalDateTime returnDate) {
         this.returnDate = returnDate;
+        this.rentalStatus = RentalStatus.COMPLETE;
     }
 }
